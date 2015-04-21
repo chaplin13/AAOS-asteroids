@@ -1,0 +1,452 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		895B33741AE6A5FC0026DDBD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 895B33721AE6A5FC0026DDBD /* Main.storyboard */; };
+		895B33761AE6A5FC0026DDBD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 895B33751AE6A5FC0026DDBD /* Images.xcassets */; };
+		895B33791AE6A5FC0026DDBD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 895B33771AE6A5FC0026DDBD /* LaunchScreen.xib */; };
+		895B33851AE6A5FC0026DDBD /* AAOSteroidsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895B33841AE6A5FC0026DDBD /* AAOSteroidsTests.swift */; };
+		896679301AE6CC30004F4C25 /* AAOS.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 896679291AE6CC30004F4C25 /* AAOS.atlas */; };
+		896679311AE6CC30004F4C25 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8966792A1AE6CC30004F4C25 /* AppDelegate.swift */; };
+		896679321AE6CC30004F4C25 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8966792B1AE6CC30004F4C25 /* GameScene.swift */; };
+		896679331AE6CC30004F4C25 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8966792C1AE6CC30004F4C25 /* GameViewController.swift */; };
+		896679341AE6CC30004F4C25 /* background-music-aac.caf in Resources */ = {isa = PBXBuildFile; fileRef = 8966792E1AE6CC30004F4C25 /* background-music-aac.caf */; };
+		896679351AE6CC30004F4C25 /* pew-pew-lei.caf in Resources */ = {isa = PBXBuildFile; fileRef = 8966792F1AE6CC30004F4C25 /* pew-pew-lei.caf */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		895B337F1AE6A5FC0026DDBD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 895B335D1AE6A5FC0026DDBD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 895B33641AE6A5FC0026DDBD;
+			remoteInfo = AAOSteroids;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		895B33651AE6A5FC0026DDBD /* AAOSteroids.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AAOSteroids.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		895B33691AE6A5FC0026DDBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		895B33731AE6A5FC0026DDBD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		895B33751AE6A5FC0026DDBD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		895B33781AE6A5FC0026DDBD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		895B337E1AE6A5FC0026DDBD /* AAOSteroidsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AAOSteroidsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		895B33831AE6A5FC0026DDBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		895B33841AE6A5FC0026DDBD /* AAOSteroidsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAOSteroidsTests.swift; sourceTree = "<group>"; };
+		896679291AE6CC30004F4C25 /* AAOS.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = AAOS.atlas; sourceTree = "<group>"; };
+		8966792A1AE6CC30004F4C25 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8966792B1AE6CC30004F4C25 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		8966792C1AE6CC30004F4C25 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		8966792E1AE6CC30004F4C25 /* background-music-aac.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "background-music-aac.caf"; sourceTree = "<group>"; };
+		8966792F1AE6CC30004F4C25 /* pew-pew-lei.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pew-pew-lei.caf"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		895B33621AE6A5FC0026DDBD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		895B337B1AE6A5FC0026DDBD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		895B335C1AE6A5FC0026DDBD = {
+			isa = PBXGroup;
+			children = (
+				895B33671AE6A5FC0026DDBD /* AAOSteroids */,
+				895B33811AE6A5FC0026DDBD /* AAOSteroidsTests */,
+				895B33661AE6A5FC0026DDBD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		895B33661AE6A5FC0026DDBD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				895B33651AE6A5FC0026DDBD /* AAOSteroids.app */,
+				895B337E1AE6A5FC0026DDBD /* AAOSteroidsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		895B33671AE6A5FC0026DDBD /* AAOSteroids */ = {
+			isa = PBXGroup;
+			children = (
+				896679291AE6CC30004F4C25 /* AAOS.atlas */,
+				8966792A1AE6CC30004F4C25 /* AppDelegate.swift */,
+				8966792B1AE6CC30004F4C25 /* GameScene.swift */,
+				8966792C1AE6CC30004F4C25 /* GameViewController.swift */,
+				8966792D1AE6CC30004F4C25 /* Sounds */,
+				895B33721AE6A5FC0026DDBD /* Main.storyboard */,
+				895B33751AE6A5FC0026DDBD /* Images.xcassets */,
+				895B33771AE6A5FC0026DDBD /* LaunchScreen.xib */,
+				895B33681AE6A5FC0026DDBD /* Supporting Files */,
+			);
+			path = AAOSteroids;
+			sourceTree = "<group>";
+		};
+		895B33681AE6A5FC0026DDBD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				895B33691AE6A5FC0026DDBD /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		895B33811AE6A5FC0026DDBD /* AAOSteroidsTests */ = {
+			isa = PBXGroup;
+			children = (
+				895B33841AE6A5FC0026DDBD /* AAOSteroidsTests.swift */,
+				895B33821AE6A5FC0026DDBD /* Supporting Files */,
+			);
+			path = AAOSteroidsTests;
+			sourceTree = "<group>";
+		};
+		895B33821AE6A5FC0026DDBD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				895B33831AE6A5FC0026DDBD /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8966792D1AE6CC30004F4C25 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				8966792E1AE6CC30004F4C25 /* background-music-aac.caf */,
+				8966792F1AE6CC30004F4C25 /* pew-pew-lei.caf */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		895B33641AE6A5FC0026DDBD /* AAOSteroids */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 895B33881AE6A5FC0026DDBD /* Build configuration list for PBXNativeTarget "AAOSteroids" */;
+			buildPhases = (
+				895B33611AE6A5FC0026DDBD /* Sources */,
+				895B33621AE6A5FC0026DDBD /* Frameworks */,
+				895B33631AE6A5FC0026DDBD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AAOSteroids;
+			productName = AAOSteroids;
+			productReference = 895B33651AE6A5FC0026DDBD /* AAOSteroids.app */;
+			productType = "com.apple.product-type.application";
+		};
+		895B337D1AE6A5FC0026DDBD /* AAOSteroidsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 895B338B1AE6A5FC0026DDBD /* Build configuration list for PBXNativeTarget "AAOSteroidsTests" */;
+			buildPhases = (
+				895B337A1AE6A5FC0026DDBD /* Sources */,
+				895B337B1AE6A5FC0026DDBD /* Frameworks */,
+				895B337C1AE6A5FC0026DDBD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				895B33801AE6A5FC0026DDBD /* PBXTargetDependency */,
+			);
+			name = AAOSteroidsTests;
+			productName = AAOSteroidsTests;
+			productReference = 895B337E1AE6A5FC0026DDBD /* AAOSteroidsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		895B335D1AE6A5FC0026DDBD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = BobbingHeads;
+				TargetAttributes = {
+					895B33641AE6A5FC0026DDBD = {
+						CreatedOnToolsVersion = 6.3;
+					};
+					895B337D1AE6A5FC0026DDBD = {
+						CreatedOnToolsVersion = 6.3;
+						TestTargetID = 895B33641AE6A5FC0026DDBD;
+					};
+				};
+			};
+			buildConfigurationList = 895B33601AE6A5FC0026DDBD /* Build configuration list for PBXProject "AAOSteroids" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 895B335C1AE6A5FC0026DDBD;
+			productRefGroup = 895B33661AE6A5FC0026DDBD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				895B33641AE6A5FC0026DDBD /* AAOSteroids */,
+				895B337D1AE6A5FC0026DDBD /* AAOSteroidsTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		895B33631AE6A5FC0026DDBD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				896679341AE6CC30004F4C25 /* background-music-aac.caf in Resources */,
+				895B33791AE6A5FC0026DDBD /* LaunchScreen.xib in Resources */,
+				895B33761AE6A5FC0026DDBD /* Images.xcassets in Resources */,
+				896679301AE6CC30004F4C25 /* AAOS.atlas in Resources */,
+				895B33741AE6A5FC0026DDBD /* Main.storyboard in Resources */,
+				896679351AE6CC30004F4C25 /* pew-pew-lei.caf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		895B337C1AE6A5FC0026DDBD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		895B33611AE6A5FC0026DDBD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				896679321AE6CC30004F4C25 /* GameScene.swift in Sources */,
+				896679311AE6CC30004F4C25 /* AppDelegate.swift in Sources */,
+				896679331AE6CC30004F4C25 /* GameViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		895B337A1AE6A5FC0026DDBD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				895B33851AE6A5FC0026DDBD /* AAOSteroidsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		895B33801AE6A5FC0026DDBD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 895B33641AE6A5FC0026DDBD /* AAOSteroids */;
+			targetProxy = 895B337F1AE6A5FC0026DDBD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		895B33721AE6A5FC0026DDBD /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				895B33731AE6A5FC0026DDBD /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		895B33771AE6A5FC0026DDBD /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				895B33781AE6A5FC0026DDBD /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		895B33861AE6A5FC0026DDBD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		895B33871AE6A5FC0026DDBD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		895B33891AE6A5FC0026DDBD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = AAOSteroids/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		895B338A1AE6A5FC0026DDBD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = AAOSteroids/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		895B338C1AE6A5FC0026DDBD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = AAOSteroidsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AAOSteroids.app/AAOSteroids";
+			};
+			name = Debug;
+		};
+		895B338D1AE6A5FC0026DDBD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = AAOSteroidsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AAOSteroids.app/AAOSteroids";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		895B33601AE6A5FC0026DDBD /* Build configuration list for PBXProject "AAOSteroids" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				895B33861AE6A5FC0026DDBD /* Debug */,
+				895B33871AE6A5FC0026DDBD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		895B33881AE6A5FC0026DDBD /* Build configuration list for PBXNativeTarget "AAOSteroids" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				895B33891AE6A5FC0026DDBD /* Debug */,
+				895B338A1AE6A5FC0026DDBD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		895B338B1AE6A5FC0026DDBD /* Build configuration list for PBXNativeTarget "AAOSteroidsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				895B338C1AE6A5FC0026DDBD /* Debug */,
+				895B338D1AE6A5FC0026DDBD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 895B335D1AE6A5FC0026DDBD /* Project object */;
+}
