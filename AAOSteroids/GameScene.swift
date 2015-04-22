@@ -7,6 +7,7 @@
 //
 
 import SpriteKit
+import SceneKit
 import AVFoundation
 
 var backgroundMusicPlayer: AVAudioPlayer!
@@ -80,8 +81,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func didMoveToView(view: SKView) {
+        //addStarfield()
         playBackgroundMusic("background-music-aac.caf")
-
+        
         //set up Physics
         physicsWorld.gravity = CGVectorMake(0, 0)
         physicsWorld.contactDelegate = self
@@ -111,7 +113,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     struct PhysicsCategory {
         static let None      : UInt32 = 0
         static let All       : UInt32 = UInt32.max
-        static let Asteroid   : UInt32 = 0b1       // 1
+        static let Asteroid  : UInt32 = 0b1       // 1
         static let EnergyBall: UInt32 = 0b10      // 2
         static let Player    : UInt32 = 0b100
     }
@@ -206,10 +208,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         updateScoreWithValue(1);
         energyBall.removeFromParent()
         asteroid.removeFromParent()
+        asteroidExplosion(asteroid.position)
+        
     }
     
     func energyBallDidCollideWithPlayer(energyBall:SKSpriteNode, player:SKSpriteNode){
         println("dead!")
+        shipExplosion(player.position)
         player.removeFromParent()
         
     }
@@ -240,6 +245,47 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
         
-    }   
+    }
+    
+    func addStarfield() {
+        
+        // create and add a camera to the scene
+        
+        // create a new scene
+        let scene = SCNScene()
+        
+        // create and add a camera to the scene
+        let cameraNode = SCNNode()
+        cameraNode.camera = SCNCamera()
+        scene.rootNode.addChildNode(cameraNode)
+        
+        // place the camera
+        cameraNode.position = SCNVector3(x: 0, y: 0, z: 15)
+        
+        let ps = SCNParticleSystem(named: "ParticleStars.scnp", inDirectory: "")
+        scene.rootNode.addParticleSystem(ps)
+        
+        let starFieldNode = SK3DNode()
+        starFieldNode.scnScene = scene
+        starFieldNode.zPosition = -100
+        self.addChild(starFieldNode)
+    }
+    
+    func shipExplosion(pos: CGPoint) {
+        var emitterNode = SKEmitterNode(fileNamed: "ExplosionParticle.sks")
+        emitterNode.particlePosition = pos
+        self.addChild(emitterNode)
+        // Don't forget to remove the emitter node after the explosion
+        self.runAction(SKAction.waitForDuration(2.5), completion: { emitterNode.removeFromParent() })
+        
+    }
+    func asteroidExplosion(pos: CGPoint) {
+        var emitterNode = SKEmitterNode(fileNamed: "AsteroidExplosion.sks")
+        emitterNode.particlePosition = pos
+        self.addChild(emitterNode)
+        // Don't forget to remove the emitter node after the explosion
+        self.runAction(SKAction.waitForDuration(3), completion: { emitterNode.removeFromParent() })
+        
+    }
 }
 

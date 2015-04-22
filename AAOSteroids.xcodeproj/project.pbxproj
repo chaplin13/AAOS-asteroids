@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		893E51D01AE833AB009D693A /* AsteroidExplosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 893E51CF1AE833AB009D693A /* AsteroidExplosion.sks */; };
 		895B33741AE6A5FC0026DDBD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 895B33721AE6A5FC0026DDBD /* Main.storyboard */; };
 		895B33761AE6A5FC0026DDBD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 895B33751AE6A5FC0026DDBD /* Images.xcassets */; };
 		895B33791AE6A5FC0026DDBD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 895B33771AE6A5FC0026DDBD /* LaunchScreen.xib */; };
@@ -18,6 +19,9 @@
 		896679341AE6CC30004F4C25 /* background-music-aac.caf in Resources */ = {isa = PBXBuildFile; fileRef = 8966792E1AE6CC30004F4C25 /* background-music-aac.caf */; };
 		896679351AE6CC30004F4C25 /* pew-pew-lei.caf in Resources */ = {isa = PBXBuildFile; fileRef = 8966792F1AE6CC30004F4C25 /* pew-pew-lei.caf */; };
 		899A59D71AE6EB2D00F5F480 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 899A59D61AE6EB2D00F5F480 /* GameScene.sks */; };
+		89A1074E1AE8378800443334 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 89A1074D1AE8378800443334 /* spark.png */; };
+		89C285191AE8213D008EC1A4 /* ExplosionParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 89C285181AE8213D008EC1A4 /* ExplosionParticle.sks */; };
+		89C2851D1AE82F56008EC1A4 /* rockParticle.png in Resources */ = {isa = PBXBuildFile; fileRef = 89C2851C1AE82C40008EC1A4 /* rockParticle.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		893E51CF1AE833AB009D693A /* AsteroidExplosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AsteroidExplosion.sks; sourceTree = "<group>"; };
 		895B33651AE6A5FC0026DDBD /* AAOSteroids.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AAOSteroids.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		895B33691AE6A5FC0026DDBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		895B33731AE6A5FC0026DDBD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -46,6 +51,9 @@
 		8966792E1AE6CC30004F4C25 /* background-music-aac.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "background-music-aac.caf"; sourceTree = "<group>"; };
 		8966792F1AE6CC30004F4C25 /* pew-pew-lei.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pew-pew-lei.caf"; sourceTree = "<group>"; };
 		899A59D61AE6EB2D00F5F480 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		89A1074D1AE8378800443334 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
+		89C285181AE8213D008EC1A4 /* ExplosionParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ExplosionParticle.sks; sourceTree = "<group>"; };
+		89C2851C1AE82C40008EC1A4 /* rockParticle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rockParticle.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +95,10 @@
 		895B33671AE6A5FC0026DDBD /* AAOSteroids */ = {
 			isa = PBXGroup;
 			children = (
+				89A1074D1AE8378800443334 /* spark.png */,
+				89C2851C1AE82C40008EC1A4 /* rockParticle.png */,
+				893E51CF1AE833AB009D693A /* AsteroidExplosion.sks */,
+				89C285181AE8213D008EC1A4 /* ExplosionParticle.sks */,
 				899A59D61AE6EB2D00F5F480 /* GameScene.sks */,
 				896679291AE6CC30004F4C25 /* AAOS.atlas */,
 				8966792A1AE6CC30004F4C25 /* AppDelegate.swift */,
@@ -215,12 +227,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89A1074E1AE8378800443334 /* spark.png in Resources */,
+				893E51D01AE833AB009D693A /* AsteroidExplosion.sks in Resources */,
 				896679341AE6CC30004F4C25 /* background-music-aac.caf in Resources */,
 				895B33791AE6A5FC0026DDBD /* LaunchScreen.xib in Resources */,
 				895B33761AE6A5FC0026DDBD /* Images.xcassets in Resources */,
 				896679301AE6CC30004F4C25 /* AAOS.atlas in Resources */,
 				899A59D71AE6EB2D00F5F480 /* GameScene.sks in Resources */,
+				89C285191AE8213D008EC1A4 /* ExplosionParticle.sks in Resources */,
 				895B33741AE6A5FC0026DDBD /* Main.storyboard in Resources */,
+				89C2851D1AE82F56008EC1A4 /* rockParticle.png in Resources */,
 				896679351AE6CC30004F4C25 /* pew-pew-lei.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
