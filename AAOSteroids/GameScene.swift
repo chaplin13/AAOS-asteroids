@@ -47,27 +47,31 @@ extension CGPoint {
 
 //Music
 func playBackgroundMusic(filename: String) {
-    let url = NSBundle.mainBundle().URLForResource(
-        filename, withExtension: nil)
-    if (url == nil) {
-        println("Could not find file: \(filename)")
-        return
+    if backgroundMusicPlayer == nil{
+        let url = NSBundle.mainBundle().URLForResource(
+            filename, withExtension: nil)
+        if (url == nil) {
+            println("Could not find file: \(filename)")
+            return
+        }
+        
+        var error: NSError? = nil
+        backgroundMusicPlayer =
+            AVAudioPlayer(contentsOfURL: url, error: &error)
+        backgroundMusicPlayer.volume = 0.3
+        if backgroundMusicPlayer == nil {
+            println("Could not create audio player: \(error!)")
+            return
+        }
+        
+        backgroundMusicPlayer.numberOfLoops = -1
+        backgroundMusicPlayer.prepareToPlay()
+        backgroundMusicPlayer.play()
     }
-    
-    var error: NSError? = nil
-    backgroundMusicPlayer =
-        AVAudioPlayer(contentsOfURL: url, error: &error)
-    if backgroundMusicPlayer == nil {
-        println("Could not create audio player: \(error!)")
-        return
-    }
-    
-    backgroundMusicPlayer.numberOfLoops = -1
-    backgroundMusicPlayer.prepareToPlay()
-    backgroundMusicPlayer.play()
 }
 
 var score:Int = 0 //The variable holding the score.
+var waitTime:Double = 1.5 //var for holding the wait between asteroids
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
@@ -81,33 +85,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func didMoveToView(view: SKView) {
+        waitTime = 1.5
+        
         //addStarfield()
-        playBackgroundMusic("background-music-aac.caf")
+        playBackgroundMusic("background2-mj.caf")
         
         //set up Physics
         physicsWorld.gravity = CGVectorMake(0, 0)
         physicsWorld.contactDelegate = self
         
         backgroundColor = SKColor.blackColor()
-        player.position = CGPoint(x: size.width * 0.1, y: size.height * 0.5)
+        addShip()
         
-        //Set up the collision detection
-        player.physicsBody = SKPhysicsBody(circleOfRadius: player.size.width/2) // 1
-        player.physicsBody?.dynamic = false // 2
-        player.physicsBody?.categoryBitMask = PhysicsCategory.Player // 3
-        player.physicsBody?.contactTestBitMask = PhysicsCategory.Asteroid // 4
-        player.physicsBody?.collisionBitMask = PhysicsCategory.None // 5
-        
-        addChild(player)
-        
-        //Here you run a sequence of actions to call a block of code (you can seamlessly pass in your addAsteroid() method here thanks to the power of Swift), and then wait for 1 second. You then repeat this sequence of actions endlessly.
-        
-        runAction(SKAction.repeatActionForever(
-            SKAction.sequence([
-                SKAction.runBlock(addAsteroid),
-                SKAction.waitForDuration(0.8)
-                ])
-            ))
+        checkScore()
     }
     
     struct PhysicsCategory {
@@ -126,50 +116,57 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         return random() * (max - min) + min
     }
     
-    func addAsteroid() {
+    func checkScore(){
         
-        // Create sprite
-        let asteroid = SKSpriteNode(imageNamed: "rocks")
+        var mod = score>10 ? score % 10 : 1
+        if (mod == 0){
+            waitTime = waitTime - 0.1
+            self.removeActionForKey("asteroid")
+            
+        }
+        self.runAction(SKAction.repeatActionForever(
+            SKAction.sequence([
+                SKAction.waitForDuration(waitTime),
+                SKAction.runBlock(addAsteroid),
+                SKAction.runBlock(checkScore)
+                ])
+            ), withKey:"asteroid")
         
-        asteroid.physicsBody = SKPhysicsBody(circleOfRadius: asteroid.size.width/2) // 1
-        asteroid.physicsBody?.dynamic = true // 2
-        asteroid.physicsBody?.categoryBitMask = PhysicsCategory.Asteroid // 3
-        asteroid.physicsBody?.contactTestBitMask = PhysicsCategory.EnergyBall // 4
-        asteroid.physicsBody?.collisionBitMask = PhysicsCategory.None // 5
-        asteroid.physicsBody?.friction = 0.5
-        
-        // Determine where to spawn the asteroid along the Y axis
-        let actualY = random(min: asteroid.size.height/2, max: size.height - asteroid.size.height/2)
-        
-        // Position the asteroid slightly off-screen along the right edge,
-        // and along a random position along the Y axis as calculated above
-        asteroid.position = CGPoint(x: size.width + asteroid.size.width/2, y: actualY)
-        
-        // Add the asteroid to the scene
-        addChild(asteroid)
-        
-        // Determine speed of the asteroid
-        let actualDuration = random(min: CGFloat(2.0), max: CGFloat(4.0))
-        
-        // Create the actions
-        //let actionMove = SKAction.moveTo(CGPoint(x: -asteroid.size.width/2, y: actualY), duration: NSTimeInterval(actualDuration))
-        
-        
-        let actionMoveDone = SKAction.removeFromParent()
-        asteroid.physicsBody!.applyImpulse(CGVectorMake(-actualDuration*10, 0))
-        
+        if (waitTime <= 0.1){
+            gameOver()
+        }
+    }
+ 
+    //MARK: Ship functions
+    func destroyShip(){
+        shipExplosion(player.position)
+        player.removeFromParent()
     }
     
+    func addShip(){
+        player.position = CGPoint(x: size.width * 0.1, y: size.height * 0.5)
+        
+        //Set up the collision detection
+        player.physicsBody = SKPhysicsBody(circleOfRadius: player.size.width/2) // 1
+        player.physicsBody?.dynamic = false // 2
+        player.physicsBody?.categoryBitMask = PhysicsCategory.Player // 3
+        player.physicsBody?.contactTestBitMask = PhysicsCategory.Asteroid // 4
+        player.physicsBody?.collisionBitMask = PhysicsCategory.None // 5
+        
+        addChild(player)
+    }
+   
     override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
         
-        runAction(SKAction.playSoundFileNamed("pew-pew-lei.caf", waitForCompletion: true))
         // Choose one of the touches to work with
         let touch = touches.first as! UITouch
         let touchLocation = touch.locationInNode(self)
         
         // Set up initial location of energyBall
         let energyBall = SKSpriteNode(imageNamed: "energyBall")
+        energyBall.name = "ball"
         energyBall.position = player.position
+        energyBall.position.x = energyBall.position.x + 20
         
         energyBall.physicsBody = SKPhysicsBody(circleOfRadius: energyBall.size.width/2)
         energyBall.physicsBody?.dynamic = false
@@ -185,7 +182,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if (offset.x < 0) { return }
         
         // 5 - OK to add now - you've double checked position
-        addChild(energyBall)
+        if (childNodeWithName("ball") == nil){
+            addChild(energyBall)
+            runAction(SKAction.playSoundFileNamed("pew-pew-lei.caf", waitForCompletion: true))
+        }
         
         // 6 - Get the direction of where to shoot
         let direction = offset.normalized()
@@ -197,14 +197,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let realDest = shootAmount + energyBall.position
         
         // 9 - Create the actions
-        let actionMove = SKAction.moveTo(realDest, duration: 2.0)
+        let actionMove = SKAction.moveTo(realDest, duration: 1)
         let actionMoveDone = SKAction.removeFromParent()
+        
         energyBall.runAction(SKAction.sequence([actionMove, actionMoveDone]))
         
     }
     
     func energyBallDidCollideWithAsteroid(energyBall:SKSpriteNode, asteroid:SKSpriteNode) {
-        println("Hit")
+        
         updateScoreWithValue(1);
         energyBall.removeFromParent()
         asteroid.removeFromParent()
@@ -212,13 +213,58 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
-    func energyBallDidCollideWithPlayer(energyBall:SKSpriteNode, player:SKSpriteNode){
-        println("dead!")
-        shipExplosion(player.position)
-        player.removeFromParent()
+    //MARK: Asteroid functions
+    func addAsteroid() {
+        
+        // Create sprite
+        let asteroid = SKSpriteNode(imageNamed: "rocks")
+        
+        asteroid.physicsBody = SKPhysicsBody(circleOfRadius: asteroid.size.width/2) // 1
+        asteroid.physicsBody?.dynamic = true // 2
+        asteroid.physicsBody?.categoryBitMask = PhysicsCategory.Asteroid // 3
+        asteroid.physicsBody?.contactTestBitMask = PhysicsCategory.EnergyBall // 4
+        asteroid.physicsBody?.collisionBitMask = PhysicsCategory.Asteroid // 5
+        asteroid.physicsBody?.friction = 0.02
+        
+        // Determine where to spawn the asteroid along the Y axis
+        let actualY = random(min: asteroid.size.height/2, max: size.height - asteroid.size.height/2)
+        
+        // Position the asteroid slightly off-screen along the right edge,
+        // and along a random position along the Y axis as calculated above
+        asteroid.position = CGPoint(x: size.width + asteroid.size.width/2, y: actualY)
+        
+        // Add the asteroid to the scene
+        addChild(asteroid)
+        
+        // Determine speed of the asteroid
+        let actualDuration = random(min: CGFloat(2.0), max: CGFloat(4.0))
+        // Create the actions
+        let actionMove = SKAction.moveTo(CGPoint(x: -asteroid.size.width/2, y: actualY), duration: NSTimeInterval(actualDuration))
+        let actionMoveDone = SKAction.removeFromParent()
+        
+        //let actionMoveDone = SKAction.removeFromParent()
+        //let actionMove = SKAction.runBlock({
+            asteroid.physicsBody!.applyImpulse(CGVectorMake(0, speed))
+        //})
+        let loseAction = SKAction.runBlock({self.updateScoreWithValue(-1)})
+        
+        asteroid.runAction(SKAction.sequence([actionMove, loseAction, actionMoveDone]))
         
     }
     
+
+    
+    func asteroidDidCollideWithPlayer(asteroid:SKSpriteNode, player:SKSpriteNode){
+        
+        runAction(SKAction.sequence([
+                SKAction.runBlock(destroyShip),
+                SKAction.waitForDuration(2.0),
+                SKAction.runBlock(gameOver)
+                ]))
+    }
+    
+    
+    //MARK: Collision Detection
     func didBeginContact(contact: SKPhysicsContact) {
         
         // 1
@@ -240,41 +286,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if((firstBody.categoryBitMask & PhysicsCategory.Asteroid != 0) &&
             (secondBody.categoryBitMask & PhysicsCategory.Player != 0)) {
-                energyBallDidCollideWithPlayer(firstBody.node as! SKSpriteNode, player: secondBody.node as! SKSpriteNode)
+                asteroidDidCollideWithPlayer(firstBody.node as! SKSpriteNode, player: secondBody.node as! SKSpriteNode)
         }
-        
-        
-        
     }
-    
-    func addStarfield() {
-        
-        // create and add a camera to the scene
-        
-        // create a new scene
-        let scene = SCNScene()
-        
-        // create and add a camera to the scene
-        let cameraNode = SCNNode()
-        cameraNode.camera = SCNCamera()
-        scene.rootNode.addChildNode(cameraNode)
-        
-        // place the camera
-        cameraNode.position = SCNVector3(x: 0, y: 0, z: 15)
-        
-        let ps = SCNParticleSystem(named: "ParticleStars.scnp", inDirectory: "")
-        scene.rootNode.addParticleSystem(ps)
-        
-        let starFieldNode = SK3DNode()
-        starFieldNode.scnScene = scene
-        starFieldNode.zPosition = -100
-        self.addChild(starFieldNode)
-    }
+   
+    // MARK: Particle Functions
     
     func shipExplosion(pos: CGPoint) {
         var emitterNode = SKEmitterNode(fileNamed: "ExplosionParticle.sks")
         emitterNode.particlePosition = pos
         self.addChild(emitterNode)
+        runAction(SKAction.playSoundFileNamed("blowdup.caf", waitForCompletion: true))
         // Don't forget to remove the emitter node after the explosion
         self.runAction(SKAction.waitForDuration(2.5), completion: { emitterNode.removeFromParent() })
         
@@ -283,9 +305,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         var emitterNode = SKEmitterNode(fileNamed: "AsteroidExplosion.sks")
         emitterNode.particlePosition = pos
         self.addChild(emitterNode)
+        runAction(SKAction.playSoundFileNamed("asteroidDeath.caf", waitForCompletion: true))
         // Don't forget to remove the emitter node after the explosion
         self.runAction(SKAction.waitForDuration(3), completion: { emitterNode.removeFromParent() })
         
+    }
+    
+    //MARK: Game OVER MAN!
+    func gameOver(){
+        score = 0
+        var waitTime:Double = 1.2
+        let reveal = SKTransition.fadeWithDuration(0.5)
+        let gameOverScene = GameOverScene(size: self.size, score:score)
+        self.view?.presentScene(gameOverScene, transition: reveal)
     }
 }
 
