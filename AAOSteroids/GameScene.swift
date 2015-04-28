@@ -85,8 +85,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func didMoveToView(view: SKView) {
-        waitTime = 1.5
-        
+        score = 0
         //addStarfield()
         playBackgroundMusic("background2-mj.caf")
         
@@ -313,7 +312,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     //MARK: Game OVER MAN!
     func gameOver(){
-        score = 0
         var waitTime:Double = 1.2
         let reveal = SKTransition.fadeWithDuration(0.5)
         let gameOverScene = GameOverScene(size: self.size, score:score)
