@@ -107,9 +107,6 @@
 		895B33671AE6A5FC0026DDBD /* AAOSteroids */ = {
 			isa = PBXGroup;
 			children = (
-				892DF9B11B0D055F001AE6B7 /* AAOS.atlas */,
-				893E51CF1AE833AB009D693A /* AsteroidExplosion.sks */,
-				89C285181AE8213D008EC1A4 /* ExplosionParticle.sks */,
 				899A59D61AE6EB2D00F5F480 /* GameScene.sks */,
 				892DF9AD1B0CFA94001AE6B7 /* GameStartScene.sks */,
 				8966792A1AE6CC30004F4C25 /* AppDelegate.swift */,
@@ -118,10 +115,7 @@
 				892DF9AF1B0CFDA2001AE6B7 /* SKButton.swift */,
 				8980386D1AE936EE00825B0C /* GameOverScene.swift */,
 				8966792C1AE6CC30004F4C25 /* GameViewController.swift */,
-				8966792D1AE6CC30004F4C25 /* Sounds */,
-				895B33721AE6A5FC0026DDBD /* Main.storyboard */,
 				895B33751AE6A5FC0026DDBD /* Images.xcassets */,
-				895B33771AE6A5FC0026DDBD /* LaunchScreen.xib */,
 				895B33681AE6A5FC0026DDBD /* Supporting Files */,
 			);
 			path = AAOSteroids;
@@ -130,6 +124,11 @@
 		895B33681AE6A5FC0026DDBD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8966792D1AE6CC30004F4C25 /* Sounds */,
+				89F0F6EE1B0D22BD00FC02CE /* Particles */,
+				892DF9B11B0D055F001AE6B7 /* AAOS.atlas */,
+				895B33721AE6A5FC0026DDBD /* Main.storyboard */,
+				895B33771AE6A5FC0026DDBD /* LaunchScreen.xib */,
 				895B33691AE6A5FC0026DDBD /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -163,6 +162,15 @@
 				8966792F1AE6CC30004F4C25 /* pew-pew-lei.caf */,
 			);
 			path = Sounds;
+			sourceTree = "<group>";
+		};
+		89F0F6EE1B0D22BD00FC02CE /* Particles */ = {
+			isa = PBXGroup;
+			children = (
+				893E51CF1AE833AB009D693A /* AsteroidExplosion.sks */,
+				89C285181AE8213D008EC1A4 /* ExplosionParticle.sks */,
+			);
+			name = Particles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
