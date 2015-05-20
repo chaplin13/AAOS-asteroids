@@ -177,8 +177,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // 3 - Determine offset of location to energyBall
         let offset = touchLocation - energyBall.position
         
-        // 4 - Bail out if you are shooting down or backwards
-        if (offset.x < 0) { return }
+        // 4 - Move Ship if touched beyond the player
+        if (offset.x <= 0) {
+            player.runAction(SKAction.moveToY(touchLocation.y, duration: 0.2))
+            return
+        }
         
         // 5 - OK to add now - you've double checked position
         if (childNodeWithName("ball") == nil){
