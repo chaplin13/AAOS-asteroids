@@ -1,9 +1,82 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BV1-FR-VrT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="2cl-Wd-fds">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Game Start View Controller-->
+        <scene sceneID="9lo-ak-3Gs">
+            <objects>
+                <viewController id="2cl-Wd-fds" customClass="GameStartViewController" customModule="AAOSteroids" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Wnv-bB-v5F"/>
+                        <viewControllerLayoutGuide type="bottom" id="gYX-Lf-GAM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="p5x-ZL-mxm" customClass="SKView">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.39999999999999963" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="StartupGraphic" translatesAutoresizingMaskIntoConstraints="NO" id="73j-bV-HU7">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hOS-xR-3KI">
+                                <rect key="frame" x="527" y="549" width="51" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="Mv5-eO-0jg"/>
+                                    <constraint firstAttribute="width" constant="49" id="l96-u7-UGR"/>
+                                </constraints>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Garden Hose Mode" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J2U-LO-CVd">
+                                <rect key="frame" x="348" y="554" width="163" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="RCk-J0-BBj"/>
+                                    <constraint firstAttribute="width" constant="163" id="ss1-UO-sQu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mB6-l0-vUy">
+                                <rect key="frame" x="88" y="331" width="424" height="59"/>
+                                <color key="backgroundColor" red="0.50196081399917603" green="0.0" blue="0.0" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="424" id="XE6-JO-Aqh"/>
+                                    <constraint firstAttribute="height" constant="59" id="kt6-pV-Kgi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="40"/>
+                                <state key="normal" title="Kill Activity Circles!">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="BV1-FR-VrT" kind="showDetail" id="DjQ-Xy-tQF"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="0.9708609533" green="0.9708609533" blue="0.9708609533" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="73j-bV-HU7" firstAttribute="top" secondItem="p5x-ZL-mxm" secondAttribute="topMargin" id="EhM-jh-Jds"/>
+                            <constraint firstItem="gYX-Lf-GAM" firstAttribute="top" secondItem="J2U-LO-CVd" secondAttribute="bottom" constant="25" id="J46-hK-hok"/>
+                            <constraint firstAttribute="centerY" secondItem="73j-bV-HU7" secondAttribute="centerY" id="PF1-jM-K1V"/>
+                            <constraint firstItem="gYX-Lf-GAM" firstAttribute="top" secondItem="hOS-xR-3KI" secondAttribute="bottom" constant="20" id="PUi-Qf-XYq"/>
+                            <constraint firstAttribute="centerX" secondItem="73j-bV-HU7" secondAttribute="centerX" id="Qgi-IM-HiP"/>
+                            <constraint firstAttribute="centerX" secondItem="mB6-l0-vUy" secondAttribute="centerX" id="YGE-d7-vdJ"/>
+                            <constraint firstAttribute="height" secondItem="73j-bV-HU7" secondAttribute="height" id="cyD-Ym-bmP"/>
+                            <constraint firstAttribute="centerY" secondItem="mB6-l0-vUy" secondAttribute="centerY" constant="-60" id="rPp-wA-SbK"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hOS-xR-3KI" secondAttribute="trailing" constant="8" id="rmG-3h-A2Q"/>
+                            <constraint firstItem="hOS-xR-3KI" firstAttribute="leading" secondItem="J2U-LO-CVd" secondAttribute="trailing" constant="16" id="stA-sk-4DA"/>
+                            <constraint firstAttribute="width" secondItem="73j-bV-HU7" secondAttribute="width" id="vpB-e9-2MU"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="ConstantStream" destination="hOS-xR-3KI" id="MHb-PC-cbc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="72k-Vf-TXV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-411" y="-316"/>
+        </scene>
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
@@ -20,6 +93,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="498" y="-245"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="StartupGraphic" width="1000" height="750"/>
+    </resources>
 </document>

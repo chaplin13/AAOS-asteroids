@@ -21,6 +21,7 @@
 		896679331AE6CC30004F4C25 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8966792C1AE6CC30004F4C25 /* GameViewController.swift */; };
 		896679341AE6CC30004F4C25 /* background-music-aac.caf in Resources */ = {isa = PBXBuildFile; fileRef = 8966792E1AE6CC30004F4C25 /* background-music-aac.caf */; };
 		896679351AE6CC30004F4C25 /* pew-pew-lei.caf in Resources */ = {isa = PBXBuildFile; fileRef = 8966792F1AE6CC30004F4C25 /* pew-pew-lei.caf */; };
+		8966926C1B92133F00E24E85 /* GameStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8966926B1B92133F00E24E85 /* GameStartViewController.swift */; };
 		8980386E1AE936EE00825B0C /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8980386D1AE936EE00825B0C /* GameOverScene.swift */; };
 		8991A7DB1B09204B004CBB28 /* GameStartScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8991A7DA1B09204B004CBB28 /* GameStartScene.swift */; };
 		899A4A271AF008250027AE9A /* background-mj.caf in Resources */ = {isa = PBXBuildFile; fileRef = 899A4A261AF008250027AE9A /* background-mj.caf */; };
@@ -59,6 +60,7 @@
 		8966792C1AE6CC30004F4C25 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		8966792E1AE6CC30004F4C25 /* background-music-aac.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "background-music-aac.caf"; sourceTree = "<group>"; };
 		8966792F1AE6CC30004F4C25 /* pew-pew-lei.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pew-pew-lei.caf"; sourceTree = "<group>"; };
+		8966926B1B92133F00E24E85 /* GameStartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameStartViewController.swift; sourceTree = "<group>"; };
 		8980386D1AE936EE00825B0C /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		8991A7DA1B09204B004CBB28 /* GameStartScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameStartScene.swift; sourceTree = "<group>"; };
 		899A4A261AF008250027AE9A /* background-mj.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "background-mj.caf"; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 			children = (
 				899A59D61AE6EB2D00F5F480 /* GameScene.sks */,
 				892DF9AD1B0CFA94001AE6B7 /* GameStartScene.sks */,
+				8966926B1B92133F00E24E85 /* GameStartViewController.swift */,
 				8966792A1AE6CC30004F4C25 /* AppDelegate.swift */,
 				8966792B1AE6CC30004F4C25 /* GameScene.swift */,
 				8991A7DA1B09204B004CBB28 /* GameStartScene.swift */,
@@ -286,6 +289,7 @@
 			files = (
 				8991A7DB1B09204B004CBB28 /* GameStartScene.swift in Sources */,
 				892DF9B01B0CFDA2001AE6B7 /* SKButton.swift in Sources */,
+				8966926C1B92133F00E24E85 /* GameStartViewController.swift in Sources */,
 				896679321AE6CC30004F4C25 /* GameScene.swift in Sources */,
 				896679311AE6CC30004F4C25 /* AppDelegate.swift in Sources */,
 				8980386E1AE936EE00825B0C /* GameOverScene.swift in Sources */,
@@ -419,6 +423,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = AAOSteroids/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -430,6 +435,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = AAOSteroids/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";

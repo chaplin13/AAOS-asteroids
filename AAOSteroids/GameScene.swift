@@ -72,6 +72,9 @@ func playBackgroundMusic(filename: String) {
 
 var score:Int = 0 //The variable holding the score.
 var waitTime:Double = 1.5 //var for holding the wait between asteroids
+var playerLocation:CGFloat = 0
+var playerMoving:Bool = false
+var constantStreamOfBall:Bool = true;
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
@@ -87,7 +90,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didMoveToView(view: SKView) {
         score = 0
         //addStarfield()
-        playBackgroundMusic("background2-mj.caf")
+        playBackgroundMusic("background-mj.caf")
         
         //set up Physics
         physicsWorld.gravity = CGVectorMake(0, 0)
@@ -144,7 +147,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func addShip(){
         player.position = CGPoint(x: size.width * 0.1, y: size.height * 0.5)
-        
+        player.name = "player";
         //Set up the collision detection
         player.physicsBody = SKPhysicsBody(circleOfRadius: player.size.width/2) // 1
         player.physicsBody?.dynamic = false // 2
@@ -154,7 +157,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         addChild(player)
     }
+    
+    override func update(currentTime: NSTimeInterval) {
+        if (playerMoving){
+            player.position.y = playerLocation
+        }
+    }
    
+    override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
+        // Choose one of the touches to work with
+       
+        for touch: AnyObject in touches {
+            let touchLocation = (touch as! UITouch).locationInNode(self)
+            
+            let thePlayer = self.nodeAtPoint(touchLocation)
+            if thePlayer.name == "player" {
+                //playerMoving = true
+                //playerLocation = touchLocation.y
+                player.position.y = touchLocation.y
+            }
+        }
+        
+    }
+    
     override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
         
         // Choose one of the touches to work with
@@ -174,19 +199,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         energyBall.physicsBody?.collisionBitMask = PhysicsCategory.None
         energyBall.physicsBody?.usesPreciseCollisionDetection = true
         
-        // 3 - Determine offset of location to energyBall
+        // Determine offset of location to energyBall
         let offset = touchLocation - energyBall.position
         
-        // 4 - Move Ship if touched beyond the player
+        // Move Ship if touched beyond the player
         if (offset.x <= 0) {
-            player.runAction(SKAction.moveToY(touchLocation.y, duration: 0.2))
             return
         }
         
-        // 5 - OK to add now - you've double checked position
-        if (childNodeWithName("ball") == nil){
+        if (childNodeWithName("ball") == nil || constantStreamOfBall == true){
+            runAction(SKAction.playSoundFileNamed("pew-pew-lei.caf", waitForCompletion: false))
             addChild(energyBall)
-            runAction(SKAction.playSoundFileNamed("pew-pew-lei.caf", waitForCompletion: true))
+            
         }
         
         // 6 - Get the direction of where to shoot
@@ -304,10 +328,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     func asteroidExplosion(pos: CGPoint) {
+        runAction(SKAction.playSoundFileNamed("asteroidDeath.caf", waitForCompletion: false))
         var emitterNode = SKEmitterNode(fileNamed: "AsteroidExplosion.sks")
         emitterNode.particlePosition = pos
         self.addChild(emitterNode)
-        runAction(SKAction.playSoundFileNamed("asteroidDeath.caf", waitForCompletion: true))
         // Don't forget to remove the emitter node after the explosion
         self.runAction(SKAction.waitForDuration(3), completion: { emitterNode.removeFromParent() })
         
