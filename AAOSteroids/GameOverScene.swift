@@ -28,7 +28,7 @@ class GameOverScene: SKScene {
         label.position = CGPoint(x: size.width/2, y: size.height/2)
         addChild(label)
         
-        var button: SKButton = SKButton(defaultButtonImage: "continueButton", activeButtonImage: "continueButton_active", buttonAction: goToGame)
+        let button: SKButton = SKButton(defaultButtonImage: "continueButton", activeButtonImage: "continueButton_active", buttonAction: goToGame)
         button.position = CGPointMake(label.position.x, label.position.y - label.frame.height * 1.5)
         addChild(button)
         

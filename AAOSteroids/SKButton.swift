@@ -35,14 +35,14 @@ class SKButton: SKNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         activeButton.hidden = false
         defaultButton.hidden = true
     }
     
-    override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
-        var touch: UITouch = touches.first as! UITouch
-        var location: CGPoint = touch.locationInNode(self)
+    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        let touch: UITouch = touches.first as! UITouch
+        let location: CGPoint = touch.locationInNode(self)
         
         if defaultButton.containsPoint(location) {
             activeButton.hidden = false
@@ -53,9 +53,9 @@ class SKButton: SKNode {
         }
     }
     
-    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
-        var touch: UITouch = touches.first as! UITouch
-        var location: CGPoint = touch.locationInNode(self)
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        let touch: UITouch = touches.first as! UITouch
+        let location: CGPoint = touch.locationInNode(self)
         
         if defaultButton.containsPoint(location) {
             action()
