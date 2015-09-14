@@ -41,7 +41,7 @@ class SKButton: SKNode {
     }
     
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        let touch: UITouch = touches.first as! UITouch
+        let touch: UITouch = touches.first!;
         let location: CGPoint = touch.locationInNode(self)
         
         if defaultButton.containsPoint(location) {
@@ -54,7 +54,7 @@ class SKButton: SKNode {
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        let touch: UITouch = touches.first as! UITouch
+        let touch: UITouch = touches.first!
         let location: CGPoint = touch.locationInNode(self)
         
         if defaultButton.containsPoint(location) {

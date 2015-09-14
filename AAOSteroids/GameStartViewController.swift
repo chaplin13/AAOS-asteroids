@@ -33,7 +33,7 @@ class GameStartViewController: UIViewController {
         constantStreamOfBall = ConstantStream.on
         
         // Create a new variable to store the instance of PlayerTableViewController
-        let destinationVC = segue.destinationViewController as! GameViewController
+        segue.destinationViewController as! GameViewController
     }
     
 }

@@ -58,7 +58,7 @@ func playBackgroundMusic(filename: String) {
         var error: NSError? = nil
         do {
             backgroundMusicPlayer =
-                try AVAudioPlayer(contentsOfURL: url)
+                try AVAudioPlayer(contentsOfURL: url!)
         } catch let error1 as NSError {
             error = error1
             backgroundMusicPlayer = nil
@@ -188,7 +188,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         
         // Choose one of the touches to work with
-        let touch = touches.first as! UITouch
+        let touch = touches.first!
         let touchLocation = touch.locationInNode(self)
         
         // Set up initial location of energyBall
@@ -324,27 +324,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // MARK: Particle Functions
     
     func shipExplosion(pos: CGPoint) {
-        var emitterNode = SKEmitterNode(fileNamed: "ExplosionParticle.sks")
-        emitterNode.particlePosition = pos
-        self.addChild(emitterNode)
+        let emitterNode = SKEmitterNode(fileNamed: "ExplosionParticle.sks")
+        emitterNode!.particlePosition = pos
+        self.addChild(emitterNode!)
         runAction(SKAction.playSoundFileNamed("blowdup.caf", waitForCompletion: true))
         // Don't forget to remove the emitter node after the explosion
-        self.runAction(SKAction.waitForDuration(2.5), completion: { emitterNode.removeFromParent() })
+        self.runAction(SKAction.waitForDuration(2.5), completion: { emitterNode!.removeFromParent() })
         
     }
     func asteroidExplosion(pos: CGPoint) {
         runAction(SKAction.playSoundFileNamed("asteroidDeath.caf", waitForCompletion: false))
-        var emitterNode = SKEmitterNode(fileNamed: "AsteroidExplosion.sks")
-        emitterNode.particlePosition = pos
-        self.addChild(emitterNode)
+        let emitterNode = SKEmitterNode(fileNamed: "AsteroidExplosion.sks")
+        emitterNode!.particlePosition = pos
+        self.addChild(emitterNode!)
         // Don't forget to remove the emitter node after the explosion
-        self.runAction(SKAction.waitForDuration(3), completion: { emitterNode.removeFromParent() })
+        self.runAction(SKAction.waitForDuration(3), completion: { emitterNode!.removeFromParent() })
         
     }
     
     //MARK: Game OVER MAN!
     func gameOver(){
-        var waitTime:Double = 1.2
+        waitTime = 1.2
         let reveal = SKTransition.fadeWithDuration(0.5)
         let gameOverScene = GameOverScene(size: self.size, score:score)
         self.view?.presentScene(gameOverScene, transition: reveal)
